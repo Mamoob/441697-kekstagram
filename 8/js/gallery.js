@@ -2,7 +2,7 @@
 
 (function () {
 
-  var pictures = document.querySelectorAll('.picture');
+
   var picturesElement = document.querySelector('.pictures');
 
   var getPictureClickHandler = function (object) {
@@ -17,11 +17,12 @@
     window.data = {
       descriptionPhotos: photos
     };
-    setPicturesClickHandlers();
     picturesElement.appendChild(window.picture.renderPhotos(window.data.descriptionPhotos));
+    setPicturesClickHandlers();
   }, console.error);
 
   var setPicturesClickHandlers = function () {
+    var pictures = document.querySelectorAll('.picture');
     for (var i = 0; i < pictures.length; i++) {
       var onPictureClick = getPictureClickHandler(window.data.descriptionPhotos[i]);
       pictures[i].addEventListener('click', onPictureClick);
