@@ -8,16 +8,16 @@
 
 
   var renderError = function () {
-    var errorElement = errorTemplate.cloneNode(true);
+    var errorElement = errorTemplate.content.cloneNode(true);
     return errorElement;
   };
 
+  var errorPopup = renderError();
+
   window.onError = function () {
-    errorContainer.appendChild(renderError());
-    var errorPopup = document.querySelector('.pop-up-error');
-    errorPopup.classList.remove('hidden');
+    errorContainer.appendChild(errorPopup);
     setTimeout(function () {
-      errorPopup.classList.add('hidden');
+      errorContainer.removeChild(errorPopup);
     }, TIMEOUT);
   };
 })();
